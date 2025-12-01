@@ -3,10 +3,199 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ConquerLauncher.App"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Conquer Launcher"
+        Height="720"
+        Width="1200"
+        Background="{StaticResource AppBackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="640"
+        MinWidth="1040">
+    <Window.Resources>
+        <x:Array x:Key="PatchNotes" Type="sys:String">
+            <sys:String>Improved launcher stability checks before game start</sys:String>
+            <sys:String>Added quick repair flow for corrupted local files</sys:String>
+            <sys:String>Updated shard selection for lower latency routes</sys:String>
+            <sys:String>Refreshed UI spacing for better readability</sys:String>
+        </x:Array>
 
+        <x:Array x:Key="Tasks" Type="sys:String">
+            <sys:String>Rebuild game cache before weekend events</sys:String>
+            <sys:String>Validate login tokens for all linked accounts</sys:String>
+            <sys:String>Download latest anti-cheat ruleset</sys:String>
+        </x:Array>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0E1422" Offset="0" />
+                <GradientStop Color="#0A0F1A" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Ellipse HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Width="420"
+                 Height="320"
+                 Fill="#1F2C46"
+                 Opacity="0.4"
+                 Margin="-120,-140,0,0" />
+
+        <Ellipse HorizontalAlignment="Right"
+                 VerticalAlignment="Bottom"
+                 Width="520"
+                 Height="420"
+                 Fill="#15203A"
+                 Opacity="0.4"
+                 Margin="0,0,-140,-180" />
+
+        <Border Background="{StaticResource SurfaceBrush}" Margin="28" CornerRadius="18" Padding="28" BorderBrush="#1E2B41" BorderThickness="1">
+            <Grid ColumnDefinitions="3*,2*" ColumnSpacing="24" RowDefinitions="Auto,Auto,*" RowSpacing="20">
+                <Grid Grid.ColumnSpan="2" Background="#151C2D" CornerRadius="12" Padding="20" BorderBrush="#1E2940" BorderThickness="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Spacing="8">
+                        <TextBlock Text="Conquer Launcher" FontSize="28" FontWeight="Bold" />
+                        <TextBlock Text="Smooth updates, clear statuses, and quick launching for your Conquer adventures." Foreground="#BAC4D9" />
+                        <WrapPanel Margin="0,6,0,0" Orientation="Horizontal" Spacing="10">
+                            <Border Background="#1E2C45" Padding="12 8" CornerRadius="8" BorderBrush="#263754" BorderThickness="1">
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <Ellipse Width="10" Height="10" Fill="#6CFF7F" />
+                                    <TextBlock Text="Shard: Solstice" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#1E2C45" Padding="12 8" CornerRadius="8" BorderBrush="#263754" BorderThickness="1">
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <Ellipse Width="10" Height="10" Fill="#FFD166" />
+                                    <TextBlock Text="Online Players: 12,341" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#1E2C45" Padding="12 8" CornerRadius="8" BorderBrush="#263754" BorderThickness="1">
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <Ellipse Width="10" Height="10" Fill="#5FE1D5" />
+                                    <TextBlock Text="Latency: 42 ms" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                        <Button Content="Check for Updates" Style="{StaticResource GhostButton}" />
+                        <Button Content="Launch Conquer" Style="{StaticResource PrimaryButton}" MinWidth="160" />
+                    </StackPanel>
+                </Grid>
+
+                <Border Grid.Row="1" Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="18" BorderBrush="#1E2940" BorderThickness="1">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Launcher" FontSize="20" FontWeight="SemiBold" />
+                            <TextBlock Text="Quick actions and maintenance" Foreground="#9FAFCB" />
+                            <StackPanel Orientation="Horizontal" Margin="0,14,0,0" Spacing="10">
+                                <Button Content="Repair" Style="{StaticResource GhostButton}" Width="100" />
+                                <Button Content="Clean Cache" Style="{StaticResource GhostButton}" Width="120" />
+                                <Button Content="Settings" Style="{StaticResource GhostButton}" Width="110" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12" VerticalAlignment="Center">
+                            <Border Background="#1F2B42" Padding="12" CornerRadius="10" BorderBrush="#2B3954" BorderThickness="1">
+                                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                                    <Ellipse Width="14" Height="14" Fill="#6CFF7F" />
+                                    <StackPanel>
+                                        <TextBlock Text="Update Channel" FontWeight="SemiBold" />
+                                        <TextBlock Text="Live" Foreground="#9FAFCB" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#1F2B42" Padding="12" CornerRadius="10" BorderBrush="#2B3954" BorderThickness="1">
+                                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                                    <Ellipse Width="14" Height="14" Fill="#FFD166" />
+                                    <StackPanel>
+                                        <TextBlock Text="Next Maintenance" FontWeight="SemiBold" />
+                                        <TextBlock Text="Saturday 2:00 UTC" Foreground="#9FAFCB" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="2" ColumnSpan="2" ColumnDefinitions="2*,*" ColumnSpacing="20">
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="18" BorderBrush="#1E2940" BorderThickness="1">
+                        <Grid RowDefinitions="Auto,*" RowSpacing="14">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+                                <Border Width="38" Height="38" Background="#1F2B42" CornerRadius="12" BorderBrush="#2B3954" BorderThickness="1" />
+                                <StackPanel>
+                                    <TextBlock Text="Patch Notes" FontSize="20" FontWeight="SemiBold" />
+                                    <TextBlock Text="Recent changes deployed to your client" Foreground="#9FAFCB" />
+                                </StackPanel>
+                            </StackPanel>
+                            <ItemsControl ItemsSource="{StaticResource PatchNotes}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#19243A" CornerRadius="10" Padding="12" Margin="0 6" BorderBrush="#23314B" BorderThickness="1">
+                                            <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                                                <Ellipse Width="10" Height="10" Fill="#5FE1D5" />
+                                                <TextBlock Text="{Binding}" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Column="1" Spacing="16">
+                        <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="16" BorderBrush="#1E2940" BorderThickness="1">
+                            <StackPanel Spacing="8">
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <Ellipse Width="10" Height="10" Fill="#6CFF7F" />
+                                    <TextBlock Text="Server Health" FontSize="18" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="6">
+                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                        <TextBlock Text="Authentication" />
+                                        <ProgressBar Grid.Column="1" Value="92" Height="8" Foreground="#5FE1D5" Background="#202C42" />
+                                    </Grid>
+                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                        <TextBlock Text="Matchmaking" />
+                                        <ProgressBar Grid.Column="1" Value="78" Height="8" Foreground="#7C5DFF" Background="#202C42" />
+                                    </Grid>
+                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                        <TextBlock Text="Content Delivery" />
+                                        <ProgressBar Grid.Column="1" Value="64" Height="8" Foreground="#FFD166" Background="#202C42" />
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="16" BorderBrush="#1E2940" BorderThickness="1">
+                            <StackPanel Spacing="10">
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <Ellipse Width="10" Height="10" Fill="#FFD166" />
+                                    <TextBlock Text="To-Do Before Launch" FontSize="18" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <ItemsControl ItemsSource="{StaticResource Tasks}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 4" VerticalAlignment="Center">
+                                                <Border Width="20" Height="20" Background="#202C42" BorderBrush="#2B3954" BorderThickness="1" CornerRadius="6">
+                                                    <Rectangle Margin="5" Fill="#5FE1D5" RadiusX="2" RadiusY="2" />
+                                                </Border>
+                                                <TextBlock Text="{Binding}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Button Content="Mark All Ready" Style="{StaticResource PrimaryButton}" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
